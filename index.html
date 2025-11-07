@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Cinema by Stallion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --gold: #d4af37;
+      --white: #f7f7f7;
+      --muted: #cccccc;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    header { text-align: center; padding: 60px 20px 40px; }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      color: var(--gold);
+      letter-spacing: 8px;
+      animation: fadeIn 2s ease;
+    }
+    .tagline {
+      margin-top: 10px;
+      font-size: 18px;
+      color: var(--muted);
+      font-style: italic;
+      animation: fadeIn 3s ease;
+    }
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      animation: fadeInUp 2s ease;
+    }
+    .btn {
+      background-color: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn:hover { background-color: var(--gold); color: var(--bg); }
+    section {
+      max-width: 900px;
+      margin: 100px auto;
+      text-align: center;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section.visible { opacity: 1; transform: translateY(0); }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    p { color: var(--muted); line-height: 1.7; font-size: 17px; }
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">TCBS</div>
+    <div class="tagline">The Stallion will take care of your movie interests.</div>
+    <div class="buttons">
+      <a href="cinephile.html" class="btn">Explore Cinephile Circle</a>
+      <a href="savvy.html" class="btn">Join The Savvy Frames</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About The Cinema by Stallion</h2>
+    <p>The Cinema by Stallion brings together passionate cinephiles under one banner. Whether you crave popping reviews with your bucket of popcorn or dream of learning the art of filmmaking, The Stallion has a place for you. We nurture creativity, collaboration, and the spirit of storytelling — because every camera has a story.</p>
+  </section>
+
+  <footer>
+    <p>“Cinephiles today, Directors tomorrow.”</p>
+    <p>© 2025 The Cinema by Stallion</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
